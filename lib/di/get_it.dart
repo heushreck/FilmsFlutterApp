@@ -8,6 +8,7 @@ import 'package:FilmsFlutterApp/domain/usecases/get_popular.dart';
 import 'package:FilmsFlutterApp/domain/usecases/get_trending.dart';
 import 'package:FilmsFlutterApp/presentation/blocs/movie_backdrop/movie_backdrop_bloc.dart';
 import 'package:FilmsFlutterApp/presentation/blocs/movie_carousel/movie_carousel_bloc.dart';
+import 'package:FilmsFlutterApp/presentation/blocs/movie_tabed/movie_tabbed_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart';
 
@@ -42,4 +43,12 @@ Future init() async {
 
   getItInstance.registerFactory(() => MovieCarouselBloc(
       getTrending: getItInstance(), movieBackdropBloc: getItInstance()));
+
+  getItInstance.registerFactory(
+    () => MovieTabbedBloc(
+      getPopular: GetPopular(getItInstance()),
+      getComingSoon: GetComingSoon(getItInstance()),
+      getPlayingNow: GetPlayingNow(getItInstance()),
+    ),
+  );
 }

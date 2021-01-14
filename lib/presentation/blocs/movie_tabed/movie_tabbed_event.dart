@@ -6,3 +6,12 @@ abstract class MovieTabbedEvent extends Equatable {
   @override
   List<Object> get props => [];
 }
+
+class MovieTabChangedEvent extends MovieTabbedEvent {
+  final int currentTabIndex;
+
+  const MovieTabChangedEvent({this.currentTabIndex = 0});
+
+  @override
+  List<Object> get props => [currentTabIndex];
+}
