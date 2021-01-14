@@ -10,9 +10,11 @@ class MovieApp extends StatelessWidget {
     ScreenUtil.init();
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Movie App',
+      title: 'Filme App',
       theme: ThemeData(
+        unselectedWidgetColor: AppColor.royalBlue,
         primaryColor: AppColor.vulcan,
+        accentColor: AppColor.royalBlue,
         scaffoldBackgroundColor: AppColor.vulcan,
         visualDensity: VisualDensity.adaptivePlatformDensity,
         textTheme: ThemeText.getTextTheme(),
