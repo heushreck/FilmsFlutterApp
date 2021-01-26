@@ -1,10 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:FilmsFlutterApp/common/constants/size_constants.dart';
 import 'package:FilmsFlutterApp/common/screenutil/screenutil.dart';
 import 'package:FilmsFlutterApp/common/extensions/num_extensions.dart';
-import 'package:FilmsFlutterApp/common/extensions/size_extensions.dart';
-import 'package:FilmsFlutterApp/presentation/journeys/movie_detail/movie_detail_app_bar.dart';
 import 'package:FilmsFlutterApp/presentation/themes/theme_text.dart';
 import 'package:FilmsFlutterApp/data/core/api_constants.dart';
 import 'package:FilmsFlutterApp/domain/entities/movie_detail_entity.dart';
@@ -55,12 +52,6 @@ class BigPoster extends StatelessWidget {
               style: Theme.of(context).textTheme.violetHeadline6,
             ),
           ),
-        ),
-        Positioned(
-          left: Sizes.dimen_16.w,
-          right: Sizes.dimen_16.w,
-          top: ScreenUtil.statusBarHeight + Sizes.dimen_4.h,
-          child: MovieDetailAppBar(),
         ),
       ],
     );
