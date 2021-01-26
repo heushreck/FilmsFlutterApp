@@ -32,6 +32,8 @@ class BigPoster extends StatelessWidget {
           child: CachedNetworkImage(
             imageUrl: '${ApiConstants.BASE_IMAGE_URL}${movie.posterPath}',
             width: ScreenUtil.screenWidth,
+            errorWidget: (context, url, error) =>
+                new Image.asset("assets/pngs/movie.png"),
           ),
         ),
         Positioned(

@@ -39,6 +39,8 @@ class MovieTabCardWidget extends StatelessWidget {
               child: CachedNetworkImage(
                 imageUrl: '${ApiConstants.BASE_IMAGE_URL}$posterPath',
                 fit: BoxFit.cover,
+                errorWidget: (context, url, error) =>
+                    new Image.asset("assets/pngs/movie.png"),
               ),
             ),
           ),
