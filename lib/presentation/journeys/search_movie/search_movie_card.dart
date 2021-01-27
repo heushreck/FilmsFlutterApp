@@ -33,7 +33,7 @@ class SearchMovieCard extends StatelessWidget {
           MaterialPageRoute(
             builder: (context) => MovieDetailScreen(
               movieDetailArguments:
-                  MovieDetailArguments(movie.id, movie.posterPath),
+                  MovieDetailArguments(movie.id, movie.posterPath, movie.title),
               heroTag: heroTag,
             ),
           ),

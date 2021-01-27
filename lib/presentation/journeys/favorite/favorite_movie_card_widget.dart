@@ -31,8 +31,8 @@ class FavoriteMovieCardWidget extends StatelessWidget {
             MaterialPageRoute(
               builder: (context) => MovieDetailScreen(
                 heroTag: heroTag,
-                movieDetailArguments:
-                    MovieDetailArguments(movie.id, movie.posterPath),
+                movieDetailArguments: MovieDetailArguments(
+                    movie.id, movie.posterPath, movie.title),
               ),
             ),
           );

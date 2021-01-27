@@ -26,7 +26,8 @@ class MovieTabCardWidget extends StatelessWidget {
         Navigator.of(context).push(
           MaterialPageRoute(
             builder: (context) => MovieDetailScreen(
-              movieDetailArguments: MovieDetailArguments(movieId, posterPath),
+              movieDetailArguments:
+                  MovieDetailArguments(movieId, posterPath, title),
               heroTag: heroTag,
             ),
           ),

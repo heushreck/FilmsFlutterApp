@@ -11,6 +11,7 @@ import 'package:FilmsFlutterApp/domain/usecases/get_favorite_movies.dart';
 import 'package:FilmsFlutterApp/domain/usecases/get_movie_detail.dart';
 import 'package:FilmsFlutterApp/domain/usecases/get_playing_now.dart';
 import 'package:FilmsFlutterApp/domain/usecases/get_popular.dart';
+import 'package:FilmsFlutterApp/domain/usecases/get_tomato_scores.dart';
 import 'package:FilmsFlutterApp/domain/usecases/get_trending.dart';
 import 'package:FilmsFlutterApp/domain/usecases/get_videos.dart';
 import 'package:FilmsFlutterApp/domain/usecases/save_movie.dart';
@@ -81,6 +82,9 @@ Future init() async {
 
   getItInstance.registerLazySingleton<CheckIfFavoriteMovie>(
       () => CheckIfFavoriteMovie(getItInstance()));
+
+  getItInstance.registerLazySingleton<GetTomatoScores>(
+      () => GetTomatoScores(getItInstance()));
 
   getItInstance.registerFactory(() => MovieBackdropBloc());
 

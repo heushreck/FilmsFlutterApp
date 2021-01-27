@@ -9,6 +9,7 @@ class AnimatedMovieCardWidget extends StatelessWidget {
   final int index;
   final int movieId;
   final String posterPath;
+  final String title;
   final PageController pageController;
 
   const AnimatedMovieCardWidget({
@@ -17,6 +18,7 @@ class AnimatedMovieCardWidget extends StatelessWidget {
     @required this.movieId,
     @required this.posterPath,
     @required this.pageController,
+    @required this.title,
   }) : super(key: key);
 
   @override
@@ -55,6 +57,7 @@ class AnimatedMovieCardWidget extends StatelessWidget {
       child: MovieCardWidget(
         movieId: movieId,
         posterPath: posterPath,
+        title: title,
       ),
     );
   }

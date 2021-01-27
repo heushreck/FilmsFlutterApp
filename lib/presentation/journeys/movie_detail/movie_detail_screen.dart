@@ -48,6 +48,7 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
     _movieDetailBloc.add(
       MovieDetailLoadEvent(
         widget.movieDetailArguments.movieId,
+        widget.movieDetailArguments.title,
       ),
     );
   }

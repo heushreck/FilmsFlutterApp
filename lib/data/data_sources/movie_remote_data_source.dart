@@ -1,10 +1,14 @@
+import 'dart:convert';
+
 import 'package:FilmsFlutterApp/data/core/api_client.dart';
 import 'package:FilmsFlutterApp/data/models/cast_crew_result_data_model.dart';
 import 'package:FilmsFlutterApp/data/models/movie_detail_model.dart';
 import 'package:FilmsFlutterApp/data/models/movie_model.dart';
 import 'package:FilmsFlutterApp/data/models/movie_result_model.dart';
+import 'package:FilmsFlutterApp/data/models/tomate_model.dart';
 import 'package:FilmsFlutterApp/data/models/video_model.dart';
 import 'package:FilmsFlutterApp/data/models/video_result_model.dart';
+import 'package:html/parser.dart';
 
 abstract class MovieRemoteDataSource {
   Future<List<MovieModel>> getTrending();
@@ -15,6 +19,7 @@ abstract class MovieRemoteDataSource {
   Future<List<CastModel>> getCastCrew(int id);
   Future<List<VideoModel>> getVideos(int id);
   Future<List<MovieModel>> getSearchedMovies(String searchTerm);
+  Future<TomatoModel> getTomatoScroes(String movieTitle);
 }
 
 class MovieRemoteDataSourceImpl extends MovieRemoteDataSource {
@@ -84,5 +89,24 @@ class MovieRemoteDataSourceImpl extends MovieRemoteDataSource {
     final movies = MoviesResultModel.fromJson(response).movies;
     print(movies);
     return movies;
+  }
+
+  @override
+  Future<TomatoModel> getTomatoScroes(String movieTitle) async {
+    final responseBody = await _client.get2('/search', params: {
+      'search': movieTitle.replaceAll(' ', '%20'),
+    });
+    var document = parse(responseBody);
+    Map<String, dynamic> result =
+        jsonDecode(document.getElementById("movies-json").innerHtml);
+    String url = result['items'][0]['url'].toString();
+    int tomatometerScore =
+        int.parse(result['items'][0]['tomatometerScore']['score']);
+    int audienceScore = int.parse(result['items'][0]['audienceScore']['score']);
+    print("url: $url, ts: $tomatometerScore, as: $audienceScore");
+    return TomatoModel(
+        url: url,
+        tomatometerScore: tomatometerScore,
+        audienceScore: audienceScore);
   }
 }

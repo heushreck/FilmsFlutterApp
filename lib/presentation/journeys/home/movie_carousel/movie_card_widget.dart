@@ -9,11 +9,13 @@ import 'package:flutter/material.dart';
 class MovieCardWidget extends StatelessWidget {
   final int movieId;
   final String posterPath;
+  final String title;
 
   const MovieCardWidget({
     Key key,
     @required this.movieId,
     @required this.posterPath,
+    @required this.title,
   }) : super(key: key);
 
   @override
@@ -27,7 +29,8 @@ class MovieCardWidget extends StatelessWidget {
           Navigator.of(context).push(
             MaterialPageRoute(
               builder: (context) => MovieDetailScreen(
-                movieDetailArguments: MovieDetailArguments(movieId, posterPath),
+                movieDetailArguments:
+                    MovieDetailArguments(movieId, posterPath, title),
                 heroTag: heroTag,
               ),
             ),

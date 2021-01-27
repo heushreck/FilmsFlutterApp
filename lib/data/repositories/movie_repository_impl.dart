@@ -3,6 +3,7 @@ import 'package:FilmsFlutterApp/data/data_sources/movie_remote_data_source.dart'
 import 'package:FilmsFlutterApp/data/models/cast_crew_result_data_model.dart';
 import 'package:FilmsFlutterApp/data/models/movie_detail_model.dart';
 import 'package:FilmsFlutterApp/data/models/movie_model.dart';
+import 'package:FilmsFlutterApp/data/models/tomate_model.dart';
 import 'package:FilmsFlutterApp/data/tables/movie_table.dart';
 import 'package:FilmsFlutterApp/domain/entities/app_error.dart';
 import 'package:FilmsFlutterApp/domain/entities/movie_entity.dart';
@@ -137,6 +138,17 @@ class MovieRepositoryImpl extends MovieRepository {
       return Right(response);
     } on Exception {
       return Left(AppError("Database error"));
+    }
+  }
+
+  Future<Either<AppError, TomatoModel>> getTomatoScroes(
+      String movieTitle) async {
+    try {
+      TomatoModel tomatoModel =
+          await remoteDataSource.getTomatoScroes(movieTitle);
+      return Right(tomatoModel);
+    } on Exception {
+      return Left(AppError("Tomato error"));
     }
   }
 }

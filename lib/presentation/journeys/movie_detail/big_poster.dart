@@ -1,7 +1,7 @@
+import 'package:FilmsFlutterApp/presentation/journeys/movie_detail/movie_scores.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:FilmsFlutterApp/common/screenutil/screenutil.dart';
-import 'package:FilmsFlutterApp/common/extensions/num_extensions.dart';
 import 'package:FilmsFlutterApp/presentation/themes/theme_text.dart';
 import 'package:FilmsFlutterApp/data/core/api_constants.dart';
 import 'package:FilmsFlutterApp/domain/entities/movie_detail_entity.dart';
@@ -54,9 +54,8 @@ class BigPoster extends StatelessWidget {
               movie.releaseDate,
               style: Theme.of(context).textTheme.greySubtitle1,
             ),
-            trailing: Text(
-              movie.voteAverage.convertToPercentageString(),
-              style: Theme.of(context).textTheme.violetHeadline6,
+            trailing: MovieScores(
+              movieDetailEntry: movie,
             ),
           ),
         ),

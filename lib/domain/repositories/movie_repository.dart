@@ -1,3 +1,4 @@
+import 'package:FilmsFlutterApp/data/models/tomate_model.dart';
 import 'package:FilmsFlutterApp/domain/entities/app_error.dart';
 import 'package:FilmsFlutterApp/domain/entities/cast_entity.dart';
 import 'package:FilmsFlutterApp/domain/entities/movie_detail_entity.dart';
@@ -19,4 +20,5 @@ abstract class MovieRepository {
   Future<Either<AppError, List<MovieEntity>>> getFavoriteMovies();
   Future<Either<AppError, void>> deleteFavoriteMovie(int movieId);
   Future<Either<AppError, bool>> checkIfMovieFavorite(int movieId);
+  Future<Either<AppError, TomatoModel>> getTomatoScroes(String movieTitle);
 }
