@@ -15,3 +15,8 @@ class SearchTermChangedEvent extends SearchMovieEvent {
   @override
   List<Object> get props => [searchTerm];
 }
+
+class SearchGetSuggestedEvent extends SearchMovieEvent {
+  @override
+  List<Object> get props => [];
+}

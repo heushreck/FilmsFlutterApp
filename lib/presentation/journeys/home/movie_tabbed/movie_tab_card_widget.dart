@@ -20,12 +20,14 @@ class MovieTabCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String heroTag = "movie_tab_";
     return GestureDetector(
       onTap: () {
         Navigator.of(context).push(
           MaterialPageRoute(
             builder: (context) => MovieDetailScreen(
-              movieDetailArguments: MovieDetailArguments(movieId),
+              movieDetailArguments: MovieDetailArguments(movieId, posterPath),
+              heroTag: heroTag,
             ),
           ),
         );
@@ -36,11 +38,14 @@ class MovieTabCardWidget extends StatelessWidget {
           Expanded(
             child: ClipRRect(
               borderRadius: BorderRadius.circular(Sizes.dimen_16.w),
-              child: CachedNetworkImage(
-                imageUrl: '${ApiConstants.BASE_IMAGE_URL}$posterPath',
-                fit: BoxFit.cover,
-                errorWidget: (context, url, error) =>
-                    new Image.asset("assets/pngs/movie.png"),
+              child: Hero(
+                tag: "$heroTag$movieId",
+                child: CachedNetworkImage(
+                  imageUrl: '${ApiConstants.BASE_IMAGE_URL}$posterPath',
+                  fit: BoxFit.cover,
+                  errorWidget: (context, url, error) =>
+                      new Image.asset("assets/pngs/movie.png"),
+                ),
               ),
             ),
           ),

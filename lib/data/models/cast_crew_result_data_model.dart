@@ -60,7 +60,8 @@ class CastModel extends CastEntity {
             name: name,
             posterPath: profilePath,
             character: character,
-            castId: castId);
+            castId: castId,
+            gender: gender);
 
   factory CastModel.fromJson(Map<String, dynamic> json) {
     return CastModel(

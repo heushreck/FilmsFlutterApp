@@ -18,6 +18,15 @@ class SearchMovieLoaded extends SearchMovieState {
   List<Object> get props => [movies];
 }
 
+class SearchSuggestedLoaded extends SearchMovieState {
+  final List<String> suggested;
+
+  SearchSuggestedLoaded(this.suggested);
+
+  @override
+  List<Object> get props => [suggested];
+}
+
 class SearchMovieLoading extends SearchMovieState {}
 
 class SearchMovieError extends SearchMovieState {}

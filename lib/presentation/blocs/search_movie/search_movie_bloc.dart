@@ -8,6 +8,7 @@ import 'package:FilmsFlutterApp/domain/entities/app_error.dart';
 import 'package:FilmsFlutterApp/domain/entities/movie_entity.dart';
 import 'package:FilmsFlutterApp/domain/entities/movie_search_params.dart';
 import 'package:FilmsFlutterApp/domain/usecases/search_movies.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 part 'search_movie_event.dart';
 part 'search_movie_state.dart';
@@ -33,6 +34,10 @@ class SearchMovieBloc extends Bloc<SearchMovieEvent, SearchMovieState> {
           (r) => SearchMovieLoaded(r),
         );
       }
+    } else if (event is SearchGetSuggestedEvent) {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      List<String> suggested = prefs.getStringList("suggested") ?? [];
+      yield SearchSuggestedLoaded(suggested);
     }
   }
 }

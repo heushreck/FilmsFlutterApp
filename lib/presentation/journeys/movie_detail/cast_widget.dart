@@ -51,8 +51,11 @@ class CastWidget extends StatelessWidget {
                               fit: BoxFit.fitWidth,
                               placeholder: (context, url) =>
                                   CircularProgressIndicator(),
-                              errorWidget: (context, url, error) =>
-                                  new Image.asset("assets/pngs/carina.png"),
+                              errorWidget: (context, url, error) => castEntity
+                                          .gender ==
+                                      1
+                                  ? new Image.asset("assets/pngs/carina.png")
+                                  : new Image.asset("assets/pngs/johannes.png"),
                             ),
                           ),
                         ),

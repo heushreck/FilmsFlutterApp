@@ -1,4 +1,5 @@
 import 'package:FilmsFlutterApp/presentation/blocs/search_movie/search_movie_bloc.dart';
+import 'package:FilmsFlutterApp/presentation/journeys/favorite/favorite_screen.dart';
 import 'package:FilmsFlutterApp/presentation/journeys/search_movie/custom_search_movie_delegate.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -19,6 +20,20 @@ class MovieAppBar extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: <Widget>[
+          IconButton(
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => FavoriteScreen(),
+                ),
+              );
+            },
+            icon: Icon(
+              Icons.list,
+              color: Colors.white,
+              size: Sizes.dimen_12.h,
+            ),
+          ),
           IconButton(
             onPressed: () {
               showSearch(

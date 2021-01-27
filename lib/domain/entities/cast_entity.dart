@@ -7,6 +7,7 @@ class CastEntity extends Equatable {
   final String posterPath;
   final String character;
   final int castId;
+  final int gender;
 
   CastEntity({
     @required this.creditId,
@@ -14,6 +15,7 @@ class CastEntity extends Equatable {
     @required this.posterPath,
     @required this.character,
     @required this.castId,
+    this.gender,
   });
 
   @override

@@ -7,23 +7,34 @@ import 'package:FilmsFlutterApp/presentation/themes/theme_text.dart';
 import 'package:FilmsFlutterApp/domain/entities/movie_entity.dart';
 import 'package:FilmsFlutterApp/presentation/journeys/movie_detail/movie_detail_arguments.dart';
 import 'package:FilmsFlutterApp/presentation/journeys/movie_detail/movie_detail_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SearchMovieCard extends StatelessWidget {
   final MovieEntity movie;
+  final String query;
 
   const SearchMovieCard({
     Key key,
     @required this.movie,
+    @required this.query,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    String heroTag = "movie_search_";
     return GestureDetector(
-      onTap: () {
+      onTap: () async {
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+        List<String> suggested = prefs.getStringList("suggested") ?? [];
+        suggested.remove(query);
+        suggested.add(query);
+        prefs.setStringList("suggested", suggested);
         Navigator.of(context).push(
           MaterialPageRoute(
             builder: (context) => MovieDetailScreen(
-              movieDetailArguments: MovieDetailArguments(movie.id),
+              movieDetailArguments:
+                  MovieDetailArguments(movie.id, movie.posterPath),
+              heroTag: heroTag,
             ),
           ),
         );
@@ -39,11 +50,15 @@ class SearchMovieCard extends StatelessWidget {
               padding: EdgeInsets.all(Sizes.dimen_8.w),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(Sizes.dimen_4.w),
-                child: CachedNetworkImage(
-                  imageUrl: '${ApiConstants.BASE_IMAGE_URL}${movie.posterPath}',
-                  width: Sizes.dimen_80.w,
-                  errorWidget: (context, url, error) =>
-                      new Image.asset("assets/pngs/movie.png"),
+                child: Hero(
+                  tag: "$heroTag${movie.id}",
+                  child: CachedNetworkImage(
+                    imageUrl:
+                        '${ApiConstants.BASE_IMAGE_URL}${movie.posterPath}',
+                    width: Sizes.dimen_80.w,
+                    errorWidget: (context, url, error) =>
+                        new Image.asset("assets/pngs/movie.png"),
+                  ),
                 ),
               ),
             ),

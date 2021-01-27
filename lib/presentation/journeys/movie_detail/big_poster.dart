@@ -8,10 +8,12 @@ import 'package:FilmsFlutterApp/domain/entities/movie_detail_entity.dart';
 
 class BigPoster extends StatelessWidget {
   final MovieDetailEntity movie;
+  final String heroTag;
 
   const BigPoster({
     Key key,
     @required this.movie,
+    @required this.heroTag,
   }) : super(key: key);
 
   @override
@@ -29,11 +31,14 @@ class BigPoster extends StatelessWidget {
               ],
             ),
           ),
-          child: CachedNetworkImage(
-            imageUrl: '${ApiConstants.BASE_IMAGE_URL}${movie.posterPath}',
-            width: ScreenUtil.screenWidth,
-            errorWidget: (context, url, error) =>
-                new Image.asset("assets/pngs/movie.png"),
+          child: Hero(
+            tag: "$heroTag${movie.id}",
+            child: CachedNetworkImage(
+              imageUrl: '${ApiConstants.BASE_IMAGE_URL}${movie.posterPath}',
+              width: ScreenUtil.screenWidth,
+              errorWidget: (context, url, error) =>
+                  new Image.asset("assets/pngs/movie.png"),
+            ),
           ),
         ),
         Positioned(
