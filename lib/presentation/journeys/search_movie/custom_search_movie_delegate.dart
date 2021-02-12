@@ -30,7 +30,7 @@ class CustomSearchDelegate extends SearchDelegate {
       IconButton(
         icon: Icon(
           Icons.clear,
-          color: query.isEmpty ? Colors.grey : AppColor.royalBlue,
+          color: query.isEmpty ? Colors.grey : Colors.white,
         ),
         onPressed: query.isEmpty
             ? null

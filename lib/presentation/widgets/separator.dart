@@ -1,6 +1,5 @@
 import 'package:FilmsFlutterApp/common/constants/size_constants.dart';
 import 'package:FilmsFlutterApp/common/extensions/size_extensions.dart';
-import 'package:FilmsFlutterApp/presentation/themes/theme_color.dart';
 import 'package:flutter/material.dart';
 
 class Separator extends StatelessWidget {
@@ -14,14 +13,8 @@ class Separator extends StatelessWidget {
         bottom: Sizes.dimen_6.h,
       ),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(Sizes.dimen_1.h)),
-        gradient: LinearGradient(
-          colors: [
-            AppColor.violet,
-            AppColor.royalBlue,
-          ],
-        ),
-      ),
+          borderRadius: BorderRadius.all(Radius.circular(Sizes.dimen_1.h)),
+          color: Colors.white),
     );
   }
 }

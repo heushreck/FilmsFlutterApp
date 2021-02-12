@@ -25,9 +25,9 @@ class ThemeText {
         color: Colors.white,
       );
 
-  static TextStyle get _whiteButton => _poppinsTextTheme.button.copyWith(
+  static TextStyle get _button => _poppinsTextTheme.button.copyWith(
         fontSize: Sizes.dimen_14.sp,
-        color: Colors.white,
+        color: AppColor.darkgrey,
       );
 
   static TextStyle get whiteBodyText2 => _poppinsTextTheme.bodyText2.copyWith(
@@ -43,13 +43,13 @@ class ThemeText {
         headline6: _whiteHeadline6,
         subtitle1: whiteSubtitle1,
         bodyText2: whiteBodyText2,
-        button: _whiteButton,
+        button: _button,
       );
 }
 
 extension ThemeTextExtension on TextTheme {
   TextStyle get royalBlueSubtitle1 => subtitle1.copyWith(
-        color: AppColor.royalBlue,
+        color: Colors.white,
         fontWeight: FontWeight.w600,
       );
 
@@ -58,11 +58,11 @@ extension ThemeTextExtension on TextTheme {
       );
 
   TextStyle get violetHeadline6 => headline6.copyWith(
-        color: AppColor.violet,
+        color: Colors.white,
       );
 
-  TextStyle get vulcanBodyText2 => bodyText2.copyWith(
-        color: AppColor.vulcan,
+  TextStyle get blackBodyText2 => bodyText2.copyWith(
+        color: Colors.black,
         fontWeight: FontWeight.w600,
       );
 

@@ -26,7 +26,7 @@ class BigPoster extends StatelessWidget {
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
               colors: [
-                Theme.of(context).primaryColor.withOpacity(0.3),
+                Theme.of(context).primaryColor.withOpacity(0.2),
                 Theme.of(context).primaryColor,
               ],
             ),

@@ -17,12 +17,7 @@ class Button extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: [
-            AppColor.royalBlue,
-            AppColor.violet,
-          ],
-        ),
+        color: Colors.white,
         borderRadius: BorderRadius.all(
           Radius.circular(Sizes.dimen_20.w),
         ),

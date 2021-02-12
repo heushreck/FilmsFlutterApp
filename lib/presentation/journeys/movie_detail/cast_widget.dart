@@ -67,7 +67,7 @@ class CastWidget extends StatelessWidget {
                             castEntity.name,
                             overflow: TextOverflow.fade,
                             maxLines: 1,
-                            style: Theme.of(context).textTheme.vulcanBodyText2,
+                            style: Theme.of(context).textTheme.blackBodyText2,
                           ),
                         ),
                         Padding(
